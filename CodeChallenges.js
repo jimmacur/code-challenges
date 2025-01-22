@@ -27,6 +27,70 @@ function findNextPalindrome(number) {
 
 // console.log('findNextPalindrome:', findNextPalindrome(123));
 
+
+// input brackets: {[]}
+// output: boolean
+// brackets need to be paired and be well-formed - in the right order
+//create a function that takes in a parameter of a string ( which will be different kinds of brackets)
+// will we only have brackets - what to do with numbers or letters or other characters
+
+function wellFormed (input) {
+  var brackets = {
+    '{': '}',
+    '[': ']',
+    '(': ')'
+  }
+  
+  // set pty 
+  var emptyArray = []
+  // turn input into an array of strings
+  var splitInput = input.split('')
+
+  for (const i of input){
+    if(i === emptyArray[emptyArray.length -1 ]) {
+      emptyArray.pop()
+    } else {
+      emptyArray.push(brackets[i])
+    }
+  }
+
+  // check if one element in the array is '{' it should have a '}' to return true otherwise false also with () and []
+  if (emptyArray.length === 0 ) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// console.log("wellFormed", wellFormed("{[]}"))
+// console.log("wellFormed", wellFormed("{}"))
+// console.log("wellFormed", wellFormed("{[]{{"))
+// console.log("wellFormed", wellFormed("{}[]()"))
+// console.log("wellFormed", wellFormed("{[(}])"))
+
+//Summation of Primes
+// The sum of the primes below 10 is  2 +3 + 5 + 7 + 17
+
+// Find the sum of all the primes below two million.
+
+// input: 2,000,000
+// output: sum of all prime numbers under the input 
+
+// function sumOfPrimes(input) {
+//   var primeNumbers = []
+
+//   if(input <= 1) {
+//     return false
+//   }
+
+//   return primeNumbers.reduce((acc, currentValue) => acc + currentValue, 0)
+// }
+
+// console.log("sum of primes", sumOfPrimes(2000000))
+
+
+
+
 // 1/6/25
 
 // A palindrome is any number, word, or phrase that reads the same forward as it does backward. In this challenge, we are going to focus on palindromic numbers. For example, 12321 is a palindromic number, whereas 123 is not.
@@ -329,3 +393,59 @@ function fizzBuzz(number){
 // console.log(fizzBuzz(15))
 
 //1/22/25
+
+// 2. Anagram Check
+
+// Problem: Write a function isAnagram that takes two strings and returns true if they are anagrams of each other, and false otherwise. (An anagram is when two strings have the same characters, in the same frequency, but in any order.)
+
+// isAngram() takes in two strings
+// create two variables splitString1 and splitString2 that each run split('') on the incoming strings
+// then run sort on the strings (this may be able to happen with the previous step)
+// then compare them for equality - return true if true
+
+
+function isAnagram(string1, string2){
+  splitString1 = string1.toLowerCase().split('').sort().join('')
+  splitString2 = string2.toLowerCase().split('').sort().join('')
+
+  if (splitString1 === splitString2) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// console.log(isAnagram("Hello", "World"))
+// console.log(isAnagram("Hello", "hello"))
+// console.log(isAnagram("pizza", "azizp"))
+// console.log(isAnagram("dog", "CAT"))
+// console.log(isAnagram("CAT011", "011CAT"))
+
+// 3. Two Sum
+
+// Problem: Write a function twoSum that takes an array of numbers and a target sum. Return the indices of the two numbers that add up to the target sum.
+// array.indexOf()
+// for loop that iterates over each indices
+// i is the first index value
+// variable num1 = is the number at index i
+// target - num1 = the second number
+// get index for second number
+// make sure second number has a valid index
+// return indices
+
+nums = [2, 3, 4, 5, 7, 8, 9, 10]
+
+function twoSum(array, target){
+  for (let i = 0; i < array.length; i++) {
+    const num1 = array[i];
+    const otherNum = target - num1;
+
+    const otherIndex = array.indexOf(otherNum)
+
+    if(otherIndex !== -1 && otherIndex !== i) {
+      return [i, otherIndex]
+    }
+  }
+}
+
+console.log(twoSum(nums, 8))
