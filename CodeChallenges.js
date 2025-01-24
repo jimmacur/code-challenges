@@ -1,3 +1,285 @@
+// 1/24/25 ruby/JS challenges
+
+// sum of two numbers
+
+function sum(num1, num2){
+  return num1 + num2
+}
+
+// console.log(sum(2,4))
+
+// Write a function that converts a temperature from Celsius to Fahrenheit. The formula is:
+
+function celToFahr(celsius){
+  return celsius * (9/5) + 32
+}
+
+// console.log(celToFahr(15))
+
+// # 3. Check for Even or Odd
+
+// # Write a function that takes a number as input and returns "even" if the number is even and "odd" if the number is odd.
+
+function evenOrOdd(number){
+  if (number%2 === 0){
+    return "even"
+  } else {
+    return "odd"
+  }
+}
+
+console.log(evenOrOdd(15))
+console.log(evenOrOdd(14))
+
+//1/22/25
+
+// 2. Anagram Check
+
+// Problem: Write a function isAnagram that takes two strings and returns true if they are anagrams of each other, and false otherwise. (An anagram is when two strings have the same characters, in the same frequency, but in any order.)
+
+// isAngram() takes in two strings
+// create two variables splitString1 and splitString2 that each run split('') on the incoming strings
+// then run sort on the strings (this may be able to happen with the previous step)
+// then compare them for equality - return true if true
+
+
+function isAnagram(string1, string2){
+  splitString1 = string1.toLowerCase().split('').sort().join('')
+  splitString2 = string2.toLowerCase().split('').sort().join('')
+
+  if (splitString1 === splitString2) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// console.log(isAnagram("Hello", "World"))
+// console.log(isAnagram("Hello", "hello"))
+// console.log(isAnagram("pizza", "azizp"))
+// console.log(isAnagram("dog", "CAT"))
+// console.log(isAnagram("CAT011", "011CAT"))
+
+// 3. Two Sum
+
+// Problem: Write a function twoSum that takes an array of numbers and a target sum. Return the indices of the two numbers that add up to the target sum.
+// array.indexOf()
+// for loop that iterates over each indices
+// i is the first index value
+// variable num1 = is the number at index i
+// target - num1 = the second number
+// get index for second number
+// make sure second number has a valid index
+// return indices
+
+nums = [2, 3, 4, 5, 7, 8, 9, 10]
+
+function twoSum(array, target){
+  for (let i = 0; i < array.length; i++) {
+    const num1 = array[i];
+    const otherNum = target - num1;
+
+    const otherIndex = array.indexOf(otherNum)
+
+    if(otherIndex !== -1 && otherIndex !== i) {
+      return [i, otherIndex]
+    }
+  }
+}
+
+// console.log(twoSum(nums, 8))
+
+
+// 1/18/25
+// ******************
+// write a function that checks if a word is included in an array of words
+
+// array = ["beet", "bears", "battle"]
+
+// function findWord(array, word) {
+//   if (array.includes(word)) {
+//     return true
+//   } else {
+//     return false
+//   }
+// }
+
+// console.log(findWord(array, "beets"))
+// console.log(findWord(array, "beet"))
+// console.log(findWord(array, "battlestar galactica"))
+
+//in ruby
+// def stands for define - to define a method
+
+// array = ["beet", "bears", "battle"]
+
+// def find_word(array, word)
+//   if array.include?(word)
+//     true
+//   else
+//     false
+//   end
+// end
+
+// puts find_word(array, "beets")              # Output: false
+// puts find_word(array, "beet")               # Output: true
+// puts find_word(array, "battlestar galactica") # Output: false
+
+// write a function that can find a word from a sentence
+
+sentence = "This is a full sentence."
+
+function findWord(sentence, word) {
+  if (sentence.split(' ').includes(word)) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// console.log(findWord(sentence, "chair"))
+// console.log(findWord(sentence, "a"))
+// console.log(findWord(sentence, "i"))
+// console.log(findWord(sentence, "full"))
+
+// 2. Count Vowels
+
+// Write a function called countVowels that takes a string and returns the number of vowels (a, e, i, o, u) in the string.
+
+// write a function that takes in a string
+// within the function use .split('') to break the string into individual strings
+// create a variable = count, that starts at 0
+// iterate (foreach) over strings - if string is a, e, i, o , or u count += 1
+// return count
+// console.log function with multiple strings some with and one without vowels
+
+function countVowels(string) {
+  let count = 0
+  let splitWord = string.split('')
+  splitWord.forEach(word => {
+    if (word === "a" || word === "e" || word === "i" || word === "o" || word === "u"){
+      count += 1
+    }
+  });
+  return count
+}
+
+// console.log(countVowels('apples'))
+// console.log(countVowels('chess'))
+// console.log(countVowels('eeeeeeeee'))
+// console.log(countVowels('npm'))
+
+// 3. FizzBuzz
+
+// Write a function called fizzBuzz that takes a number n and prints the numbers from 1 to n. For multiples of 3, print “Fizz” instead of the number, and for multiples of 5, print “Buzz”. For numbers divisible by both, print “FizzBuzz”.
+
+// write a function that takes a number as an argument
+// returns every number from 1 to that number
+// if printed number is a multiple of 3 print fizz instead
+// if printed number is a multiple of 5 print buzz instead
+// if printed number is a multiple of 3 and 5 print fizzbuzz instead
+//
+function fizzBuzz(number){
+  let nums = []
+  for (let i = 1; i <= number; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      nums.push("FizzBuzz")
+    } else if (i % 3 === 0) {
+      nums.push('Fizz') 
+    } else if (i % 5 === 0) {
+      nums.push('Buzz')
+    } else {
+      nums.push(i)
+    }
+  }
+  return nums
+}
+
+// console.log(fizzBuzz(15))
+
+
+// *********************
+// You have an array which contains all numbers from 1 to 1 million.
+// The numbers are randomly ordered/shuffled in the array.
+// One number is in the array twice, also at some random location.
+// How might you find the duplicate value?
+
+// 1st sort array 
+// then check index position 0 and 1 for equality
+// if not true then move to checking position 
+//
+//let millionArray = [5,1,3,7,8,0,3,9,4,2]
+
+// function findDupe(arr) {
+//   let sorted = arr.sort((a,b) => a - b)
+
+//   for (let i = 0; i <= arr.length; i ++) {
+//     if (sorted[i] === sorted[i + 1]) {
+//       return sorted[i]
+//     }  
+//   }
+// }
+
+// console.log(findDupe(millionArray))
+// //
+//1. Reverse a String
+
+// Write a function called reverseString that takes a string as input and returns the string reversed.
+
+function reverseString(string) {
+  return string.split('').reverse().join('')
+} 
+
+// console.log(reverseString("Cheese"))
+
+// reverse reverses the order of separate things not a mirror image of something, so it needs to be split first
+
+// *************************
+
+// 2. Sum of Numbers
+
+// Write a function called sumNumbers that takes an array of numbers and returns the sum of all the numbers in the array.
+
+function sumOfNumbers(nums) {
+  return nums.reduce((acc, currentValue) => acc + currentValue)
+} 
+
+// console.log(sumOfNumbers([2, 5, 7, 9]))
+
+// *****************
+//
+// 3. Check Even or Odd
+
+// Write a function called isEven that takes a number as input and returns true if the number is even, or false if it is odd.
+//
+// Function takes a number as an argument
+// Divides that number by 2
+// if number has a remainder then it is odd and return false
+// if number does not have a remainder return true
+
+function findEven(num) {
+  if (num % 2 === 0) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// console.log (findEven(7))
+// console.log (findEven(1))
+// console.log (findEven(4))
+// console.log (findEven(0))
+// console.log (findEven(800))
+
+
+
+
+
+
+
+
+
+
 // Code Challenges
 
 // 12/20/24
@@ -191,7 +473,7 @@ const findMostFrequent = (arr) => {
     counts[item] = (counts[item] || 0) + 1;
   }
 
-  console.log(counts);
+  // console.log(counts);
 }
   // map over the array 
   // for each instance of a new element create a key with a count of 1
@@ -212,240 +494,3 @@ const findMostFrequent = (arr) => {
 // console.log(findMostFrequent([]))
 // Output: null (Empty array case)
 
-// *********************
-// You have an array which contains all numbers from 1 to 1 million.
-// The numbers are randomly ordered/shuffled in the array.
-// One number is in the array twice, also at some random location.
-// How might you find the duplicate value?
-
-// 1st sort array 
-// then check index position 0 and 1 for equality
-// if not true then move to checking position 
-//
-//let millionArray = [5,1,3,7,8,0,3,9,4,2]
-
-// function findDupe(arr) {
-//   let sorted = arr.sort((a,b) => a - b)
-
-//   for (let i = 0; i <= arr.length; i ++) {
-//     if (sorted[i] === sorted[i + 1]) {
-//       return sorted[i]
-//     }  
-//   }
-// }
-
-// console.log(findDupe(millionArray))
-// //
-//1. Reverse a String
-
-// Write a function called reverseString that takes a string as input and returns the string reversed.
-
-function reverseString(string) {
-  return string.split('').reverse().join('')
-} 
-
-// console.log(reverseString("Cheese"))
-
-// reverse reverses the order of separate things not a mirror image of something, so it needs to be split first
-
-// *************************
-
-// 2. Sum of Numbers
-
-// Write a function called sumNumbers that takes an array of numbers and returns the sum of all the numbers in the array.
-
-function sumOfNumbers(nums) {
-  return nums.reduce((acc, currentValue) => acc + currentValue)
-} 
-
-// console.log(sumOfNumbers([2, 5, 7, 9]))
-
-// *****************
-//
-// 3. Check Even or Odd
-
-// Write a function called isEven that takes a number as input and returns true if the number is even, or false if it is odd.
-//
-// Function takes a number as an argument
-// Divides that number by 2
-// if number has a remainder then it is odd and return false
-// if number does not have a remainder return true
-
-function findEven(num) {
-  if (num % 2 === 0) {
-    return true
-  } else {
-    return false
-  }
-}
-
-// console.log (findEven(7))
-// console.log (findEven(1))
-// console.log (findEven(4))
-// console.log (findEven(0))
-// console.log (findEven(800))
-
-
-// ******************
-// write a function that checks if a word is included in an array of words
-
-// array = ["beet", "bears", "battle"]
-
-// function findWord(array, word) {
-//   if (array.includes(word)) {
-//     return true
-//   } else {
-//     return false
-//   }
-// }
-
-// console.log(findWord(array, "beets"))
-// console.log(findWord(array, "beet"))
-// console.log(findWord(array, "battlestar galactica"))
-
-//in ruby
-// def stands for define - to define a method
-
-// array = ["beet", "bears", "battle"]
-
-// def find_word(array, word)
-//   if array.include?(word)
-//     true
-//   else
-//     false
-//   end
-// end
-
-// puts find_word(array, "beets")              # Output: false
-// puts find_word(array, "beet")               # Output: true
-// puts find_word(array, "battlestar galactica") # Output: false
-
-// write a function that can find a word from a sentence
-
-sentence = "This is a full sentence."
-
-function findWord(sentence, word) {
-  if (sentence.split(' ').includes(word)) {
-    return true
-  } else {
-    return false
-  }
-}
-
-// console.log(findWord(sentence, "chair"))
-// console.log(findWord(sentence, "a"))
-// console.log(findWord(sentence, "i"))
-// console.log(findWord(sentence, "full"))
-
-// 2. Count Vowels
-
-// Write a function called countVowels that takes a string and returns the number of vowels (a, e, i, o, u) in the string.
-
-// write a function that takes in a string
-// within the function use .split('') to break the string into individual strings
-// create a variable = count, that starts at 0
-// iterate (foreach) over strings - if string is a, e, i, o , or u count += 1
-// return count
-// console.log function with multiple strings some with and one without vowels
-
-function countVowels(string) {
-  let count = 0
-  let splitWord = string.split('')
-  splitWord.forEach(word => {
-    if (word === "a" || word === "e" || word === "i" || word === "o" || word === "u"){
-      count += 1
-    }
-  });
-  return count
-}
-
-// console.log(countVowels('apples'))
-// console.log(countVowels('chess'))
-// console.log(countVowels('eeeeeeeee'))
-// console.log(countVowels('npm'))
-
-// 3. FizzBuzz
-
-// Write a function called fizzBuzz that takes a number n and prints the numbers from 1 to n. For multiples of 3, print “Fizz” instead of the number, and for multiples of 5, print “Buzz”. For numbers divisible by both, print “FizzBuzz”.
-
-// write a function that takes a number as an argument
-// returns every number from 1 to that number
-// if printed number is a multiple of 3 print fizz instead
-// if printed number is a multiple of 5 print buzz instead
-// if printed number is a multiple of 3 and 5 print fizzbuzz instead
-//
-function fizzBuzz(number){
-  let nums = []
-  for (let i = 1; i <= number; i++) {
-    if (i % 3 === 0 && i % 5 === 0) {
-      nums.push("FizzBuzz")
-    } else if (i % 3 === 0) {
-      nums.push('Fizz') 
-    } else if (i % 5 === 0) {
-      nums.push('Buzz')
-    } else {
-      nums.push(i)
-    }
-  }
-  return nums
-}
-
-// console.log(fizzBuzz(15))
-
-//1/22/25
-
-// 2. Anagram Check
-
-// Problem: Write a function isAnagram that takes two strings and returns true if they are anagrams of each other, and false otherwise. (An anagram is when two strings have the same characters, in the same frequency, but in any order.)
-
-// isAngram() takes in two strings
-// create two variables splitString1 and splitString2 that each run split('') on the incoming strings
-// then run sort on the strings (this may be able to happen with the previous step)
-// then compare them for equality - return true if true
-
-
-function isAnagram(string1, string2){
-  splitString1 = string1.toLowerCase().split('').sort().join('')
-  splitString2 = string2.toLowerCase().split('').sort().join('')
-
-  if (splitString1 === splitString2) {
-    return true
-  } else {
-    return false
-  }
-}
-
-// console.log(isAnagram("Hello", "World"))
-// console.log(isAnagram("Hello", "hello"))
-// console.log(isAnagram("pizza", "azizp"))
-// console.log(isAnagram("dog", "CAT"))
-// console.log(isAnagram("CAT011", "011CAT"))
-
-// 3. Two Sum
-
-// Problem: Write a function twoSum that takes an array of numbers and a target sum. Return the indices of the two numbers that add up to the target sum.
-// array.indexOf()
-// for loop that iterates over each indices
-// i is the first index value
-// variable num1 = is the number at index i
-// target - num1 = the second number
-// get index for second number
-// make sure second number has a valid index
-// return indices
-
-nums = [2, 3, 4, 5, 7, 8, 9, 10]
-
-function twoSum(array, target){
-  for (let i = 0; i < array.length; i++) {
-    const num1 = array[i];
-    const otherNum = target - num1;
-
-    const otherIndex = array.indexOf(otherNum)
-
-    if(otherIndex !== -1 && otherIndex !== i) {
-      return [i, otherIndex]
-    }
-  }
-}
-
-console.log(twoSum(nums, 8))
