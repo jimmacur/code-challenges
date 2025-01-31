@@ -1,5 +1,41 @@
 // 1/31/25
 
+// find the largest number
+
+// original
+// function findLargestNumber(numbers) {
+//   let largest = 0; 
+
+//   for (let i = 1; i < numbers.length; i++) {
+//     if (numbers[i] > largest) {
+//       largest = numbers[i];
+//     }
+//   }
+
+//   return largest;
+// }
+
+function findLargestNumber(numbers) {
+  if (numbers.length === 0) return null
+  
+  let largest = numbers[0]; 
+
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] > largest) {
+      console.log("i:", i)
+      largest = numbers[i];
+    }
+  }
+
+  return largest;
+}
+
+console.log(findLargestNumber([3, 7, 2, 9, 5])); 
+console.log(findLargestNumber([-10, -3, -50, -1])); 
+console.log(findLargestNumber([100])); 
+console.log(findLargestNumber([])); 
+
+
 // fix the broken function
 
 // Function Name: capitalizeWords
@@ -19,15 +55,15 @@ function capitalizeWords(sentence) {
   const newWords = []
   for (let i = 0; i < words.length; i++) {
     newWords.push(words[i][0].toUpperCase() + words[i].slice(1));
-    console.log("i", i)
-    console.log("newWords", newWords)
-    console.log("words[i]", words[i])
-    console.log("words[i][0]", words[i][0])
+    // console.log("i", i)
+    // console.log("newWords", newWords)
+    // console.log("words[i]", words[i])
+    // console.log("words[i][0]", words[i][0])
   }
   return newWords.join(' ');
 }
 
-console.log(capitalizeWords("hello world from mcgraw hill"));
+// console.log(capitalizeWords("hello world from mcgraw hill"));
 
 // 2nd solution
 
