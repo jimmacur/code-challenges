@@ -1,3 +1,47 @@
+// 1/31/25
+
+// fix the broken function
+
+// Function Name: capitalizeWords
+// Purpose: Takes a sentence as input and returns the sentence with the first letter of each word capitalized.
+
+// original
+// function capitalizeWords(sentence) {
+//   const words = sentence.split(' ');
+//   for (let i = 0; i < words.length; i++) {
+//     words[i][0] = words[i][0].toUpperCase();
+//   }
+//   return words.join(' ');
+// }
+
+function capitalizeWords(sentence) {
+  const words = sentence.split(' ')
+  const newWords = []
+  for (let i = 0; i < words.length; i++) {
+    newWords.push(words[i][0].toUpperCase() + words[i].slice(1));
+    console.log("i", i)
+    console.log("newWords", newWords)
+    console.log("words[i]", words[i])
+    console.log("words[i][0]", words[i][0])
+  }
+  return newWords.join(' ');
+}
+
+console.log(capitalizeWords("hello world from mcgraw hill"));
+
+// 2nd solution
+
+// function capitalizeWords(sentence) {
+//   return sentence
+//     .split(' ')
+//     .map(word => word[0].toUpperCase() + word.slice(1))
+//     .join(' ');
+// }
+
+// console.log(capitalizeWords("hello world from mcgraw hill"));
+
+
+
 // 1/24/25 ruby/JS challenges
 
 // sum of two numbers
@@ -28,8 +72,8 @@ function evenOrOdd(number){
   }
 }
 
-console.log(evenOrOdd(15))
-console.log(evenOrOdd(14))
+// console.log(evenOrOdd(15))
+// console.log(evenOrOdd(14))
 
 //1/22/25
 
