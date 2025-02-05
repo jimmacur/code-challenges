@@ -1,3 +1,99 @@
+// 2/4/25
+
+// Write a function that takes an array of numbers and returns a new array with all the duplicate numbers removed. The order of the elements should remain the same as the original array.
+
+function removeDuplicates(arr) {
+  return [...new Set(arr)];
+}
+
+console.log(removeDuplicates([1, 5, 2, 3, 2, 4, 1, 5])); 
+// Output: [1, 2, 3, 4, 5]
+
+console.log(removeDuplicates([5, 5, 5, 5, 5])); 
+// // Output: [5]
+
+console.log(removeDuplicates([10, 20, 30, 40])); 
+// // Output: [10, 20, 30, 40]
+
+// Takeaway - I was trying to sort the array first and look for duplicates, then remove the duplicates. But this was creating problems with the index and splice. Returning a new set automatically removes the duplicates and keeps the original order. 
+
+
+
+// Problem:
+// Write a function that takes a string and a character as inputs and returns how many times that character appears in the string.
+
+function characterCount(str, char) {
+  let newArray = str.split('')
+  charCount = 0
+  for(let i = 0; i < newArray.length; i++) {
+    if (str[i] === char) {
+      charCount ++
+    }
+  }
+  return charCount
+}
+
+// console.log(characterCount("hello world", "l")); // Output: 3
+// console.log(characterCount("javascript", "a"));  // Output: 2
+// console.log(characterCount("mississippi", "s")); // Output: 4
+
+// Problem(fix it): This function should take an array of numbers and return the sum of all the elements.
+
+// original 
+//function sumArray(numbers) {
+//   let sum = 0;
+//   for (let i = 0; i <= numbers.length; i++) {
+//     sum += numbers[i];
+//   }
+//   return sum;
+// }
+
+function sumArray(numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    // console.log("i", i)
+    // console.log("numbers[i]", numbers[i] )
+    sum += numbers[i];
+    // console.log("sum", sum)
+  }
+  return sum;
+}
+
+// The issue was with the length of the for loop creating one too many iterations therefore making the response NaN because it was trying to add a number that didn't exist.
+
+// console.log(sumArray([1, 2, 3, 4, 5]));    // Expected: 15
+// console.log(sumArray([-1, -2, -3, -4]));   // Expected: -10
+// console.log(sumArray([]));                 // Expected: 0
+
+
+//  Problem(fix it): This function should check if a given string is a palindrome (a word that reads the same forward and backward). It should return true if the string is a palindrome and false otherwise.
+
+// original
+// function isPalindrome(str) {
+//   const reversed = str.split('').reverse;
+//   if (str === reversed) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+function isPalindrome(str) {
+  const reversed = str.split('').reverse().join('');
+  console.log("reversed:", reversed)
+  if (str === reversed) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// console.log(isPalindrome("racecar")); // Expected: true
+// console.log(isPalindrome("hello"));   // Expected: false
+// console.log(isPalindrome("madam"));   // Expected: true
+
+// The original was missing the '()' on reverse and then also missing the join(''). Without the () the reverse method will not be called. And without the join('') it will reverse the split string but it will never equal the original because each character is its own string/
+
 // 1/31/25
 
 // find the largest number
@@ -30,10 +126,10 @@ function findLargestNumber(numbers) {
   return largest;
 }
 
-console.log(findLargestNumber([3, 7, 2, 9, 5])); 
-console.log(findLargestNumber([-10, -3, -50, -1])); 
-console.log(findLargestNumber([100])); 
-console.log(findLargestNumber([])); 
+// console.log(findLargestNumber([3, 7, 2, 9, 5])); 
+// console.log(findLargestNumber([-10, -3, -50, -1])); 
+// console.log(findLargestNumber([100])); 
+// console.log(findLargestNumber([])); 
 
 
 // fix the broken function
@@ -288,20 +384,21 @@ function fizzBuzz(number){
 // then check index position 0 and 1 for equality
 // if not true then move to checking position 
 //
-//let millionArray = [5,1,3,7,8,0,3,9,4,2]
+let millionArray = [5,1,3,7,8,0,3,9,4,2]
 
-// function findDupe(arr) {
-//   let sorted = arr.sort((a,b) => a - b)
+function findDupe(arr) {
+  let sorted = arr.sort((a,b) => a - b)
 
-//   for (let i = 0; i <= arr.length; i ++) {
-//     if (sorted[i] === sorted[i + 1]) {
-//       return sorted[i]
-//     }  
-//   }
-// }
+  for (let i = 0; i <= arr.length; i ++) {
+    if (sorted[i] === sorted[i + 1]) {
+      return sorted[i]
+    }  
+  }
+}
 
 // console.log(findDupe(millionArray))
-// //
+
+
 //1. Reverse a String
 
 // Write a function called reverseString that takes a string as input and returns the string reversed.
@@ -350,17 +447,6 @@ function findEven(num) {
 // console.log (findEven(4))
 // console.log (findEven(0))
 // console.log (findEven(800))
-
-
-
-
-
-
-
-
-
-
-// Code Challenges
 
 // 12/20/24
 // Instructions
